@@ -75,7 +75,7 @@ function TextureStart(){
 	scene.background = bgTexture;
 	*/
 
-	const bgTexture = loader.load('Images/sky.png');
+	const bgTexture = loader.load('Images/Sky.png');
 	bgTexture.colorSpace = THREE.SRGBColorSpace;
 	scene.background = bgTexture;
 	/*
