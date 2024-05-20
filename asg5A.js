@@ -63,12 +63,19 @@ function TextureStart(){
 	*/
 	// 'Images\tears_of_steel_bridge_4k.exr'
 	//
+
+	/*
 	const bgTexture = loader.load('Images/sky.png',
     () => {
       texture.mapping = THREE.EquirectangularReflectionMapping;
       texture.colorSpace = THREE.SRGBColorSpace;
       scene.background = texture;
 	});
+	bgTexture.colorSpace = THREE.SRGBColorSpace;
+	scene.background = bgTexture;
+	*/
+
+	const bgTexture = loader.load('Images/sky.png');
 	bgTexture.colorSpace = THREE.SRGBColorSpace;
 	scene.background = bgTexture;
 	/*
