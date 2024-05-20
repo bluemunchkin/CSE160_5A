@@ -20,12 +20,12 @@ function cameraSetUp(){
 	const fov = 75;
 	const aspect = 2; // the canvas default
 	const near = 0.1;
-	const far = 5;
+	const far = 100;
 	camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-	camera.position.z = 2;
+	camera.position.z = 3;
 
 	controls = new OrbitControls( camera, canvas );
-	controls.target.set( 0, 5, 0 );
+	controls.target.set( 0, 0, 0 );
 	controls.update();
 }
 
@@ -52,6 +52,7 @@ function TextureStart(){
 	const planeSize = 4000;
 
 	loader = new THREE.TextureLoader();
+	/*
 	const texture = loader.load( 'Images/checker.png' );
 	texture.colorSpace = THREE.SRGBColorSpace;
 	texture.wrapS = THREE.RepeatWrapping;
@@ -59,7 +60,18 @@ function TextureStart(){
 	texture.magFilter = THREE.NearestFilter;
 	const repeats = planeSize / 200;
 	texture.repeat.set( repeats, repeats );
-
+	*/
+	// 'Images\tears_of_steel_bridge_4k.exr'
+	//
+	const bgTexture = loader.load('Images/sky.png',
+    () => {
+      texture.mapping = THREE.EquirectangularReflectionMapping;
+      texture.colorSpace = THREE.SRGBColorSpace;
+      scene.background = texture;
+	});
+	bgTexture.colorSpace = THREE.SRGBColorSpace;
+	scene.background = bgTexture;
+	/*
 	const planeGeo = new THREE.PlaneGeometry( planeSize, planeSize );
 	const planeMat = new THREE.MeshPhongMaterial( {
 		map: texture,
@@ -68,6 +80,7 @@ function TextureStart(){
 	const mesh = new THREE.Mesh( planeGeo, planeMat );
 	mesh.rotation.x = Math.PI * - .5;
 	scene.add( mesh );
+	*/
 
 }
 
@@ -108,7 +121,8 @@ function loadMainModle(){
 function main() {
 
 	canvas = document.querySelector( '#c' );
-	renderer = new THREE.WebGLRenderer( { antialias: true, canvas } );
+	renderer = new THREE.WebGLRenderer( { antialias: true, canvas,	alpha: true, } );
+	
 
 	cameraSetUp();
 	scene = new THREE.Scene();
@@ -178,7 +192,7 @@ function loadColorTexture( path ) {
 
 }
 
-function makeInstance( geometry, material, x,y ) {
+function makeInstance( geometry, material, x,y,z ) {
 
 	//const material = new THREE.MeshPhongMaterial( { color } );
 
@@ -187,6 +201,7 @@ function makeInstance( geometry, material, x,y ) {
 
 	cube.position.x = x;
 	cube.position.y = y;
+	cube.position.z = z;
 
 	return cube;
 
@@ -206,8 +221,32 @@ function MakeCubes(){
 	color = 0xaa8844
 	const material_2 = new THREE.MeshPhongMaterial(   {color}  );
 	cubes = [
-		makeInstance( geometrycone, material_1, - 2.5,1 ),
-		makeInstance( geometrysphere, material_2, 2.5,1 ),
+		makeInstance( geometrycone, material_1, - 2.5,1,0 ),
+		makeInstance( geometrysphere, material_2, 2.5,1,0 ),
+
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 3,2,-2 ),
 	];
 
 
@@ -220,7 +259,7 @@ function MakeCubes(){
 		new THREE.MeshBasicMaterial( { map: loadColorTexture( 'Images/EAR.jpg' ) } ),
 	];
 	cubeText=[]
-	cubeText.push( makeInstance( geometryBox,materials,0,3.5) ); // add to our list of cubes to rotate
+	cubeText.push( makeInstance( geometryBox,materials,0,3.5,0) ); // add to our list of cubes to rotate
 
 	
 }
