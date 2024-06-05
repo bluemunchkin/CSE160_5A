@@ -41,7 +41,7 @@ function light(){
 
 	const skyColor = 0xB1E1FF; // light blue
 	const groundColor = 0xB97A20; // brownish orange
-	const light_2 = new THREE.HemisphereLight( skyColor, groundColor, intensity );
+	const light_2 = new THREE.HemisphereLight( skyColor, intensity );
 	scene.add( light_2 );
 
 
@@ -103,6 +103,9 @@ function loadMainModle(){
 			objLoader.setMaterials( mtl );
 			objLoader.load( 'Images/building.obj', ( root ) => {
 
+				root.scale.setScalar(1.5);
+				root.position.z =-.5
+				root.position.y =-.4
 				scene.add( root );
 
 				// compute the box that contains all the stuff
@@ -121,8 +124,21 @@ function loadMainModle(){
 				controls.update();
 
 			} );
-
 		} );
+}
+
+function loadMainModle2(){
+
+	const GLTFloader = new GLTFLoader();
+
+	//const GLTFloader = new MTLLoader();
+	GLTFloader.load( 'Images/old_computer_noscreen.gltf', ( glt ) => {
+		glt.scene.scale.set(12,12,12)
+		glt.scene.position.y = -5
+		glt.scene.rotation.y = 3.15
+		scene.add( glt.scene );
+		} );
+
 }
 
 function main() {
@@ -142,6 +158,7 @@ function main() {
 	MakeCubes();
 
 	loadMainModle();
+	loadMainModle2();
 
 
 	requestAnimationFrame( render );
@@ -231,29 +248,29 @@ function MakeCubes(){
 		makeInstance( geometrycone, material_1, - 2.5,1,0 ),
 		makeInstance( geometrysphere, material_2, 2.5,1,0 ),
 
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 2,2,-2 ),
+		makeInstance( geometryBox, material_2, 2,2,-2 ),
+		makeInstance( geometryBox, material_2, 2,2,-2 ),
+		makeInstance( geometryBox, material_2, 2,2,-2 ),
+		makeInstance( geometryBox, material_2, 2,2,-2 ),
 
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, 2,2,-2 ),
+		makeInstance( geometryBox, material_2, 2,2,-2 ),
+		makeInstance( geometryBox, material_2, 2,2,-2 ),
+		makeInstance( geometryBox, material_2, 2,2,-2 ),
+		makeInstance( geometryBox, material_2, 2,2,-2 ),
 
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, -2,2,-2 ),
+		makeInstance( geometryBox, material_2, -2,2,-2 ),
+		makeInstance( geometryBox, material_2, -2,2,-2 ),
+		makeInstance( geometryBox, material_2, -2,2,-2 ),
+		makeInstance( geometryBox, material_2, -2,2,-2 ),
 
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
-		makeInstance( geometryBox, material_2, 3,2,-2 ),
+		makeInstance( geometryBox, material_2, -2,2,-2 ),
+		makeInstance( geometryBox, material_2, -2,2,-2 ),
+		makeInstance( geometryBox, material_2, -2,2,-2 ),
+		makeInstance( geometryBox, material_2, -2,2,-2 ),
+		makeInstance( geometryBox, material_2, -2,2,-2 ),
 	];
 
 
@@ -266,7 +283,7 @@ function MakeCubes(){
 		new THREE.MeshBasicMaterial( { map: loadColorTexture( 'Images/EAR.jpg' ) } ),
 	];
 	cubeText=[]
-	cubeText.push( makeInstance( geometryBox,materials,0,3.5,0) ); // add to our list of cubes to rotate
+	cubeText.push( makeInstance( geometryBox,materials,0,3.5,1) ); // add to our list of cubes to rotate
 
 	
 }

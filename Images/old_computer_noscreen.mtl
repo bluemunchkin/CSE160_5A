@@ -1,0 +1,32 @@
+# Blender 3.3.1 MTL File: 'None'
+# www.blender.org
+
+newmtl m_863abdbe-17dd-361b-af02-1bf42b9f21e5
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:/Users/michael/Desktop/CSE160/asgn5A/Images/com.png
+
+newmtl m_c97041ec-4c6f-5895-d137-1d514365c306
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:/Users/michael/Desktop/CSE160/asgn5A/Images/keyboard.png
+
+newmtl m_d38cbe4a-723b-5192-2ef2-2b20e1d6e3bd
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:/Users/michael/Desktop/CSE160/asgn5A/Images/Mouse.png
